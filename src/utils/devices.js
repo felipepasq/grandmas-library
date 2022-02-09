@@ -5,6 +5,8 @@ export const size = {
     laptopL: 1440,
   };
   
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     mobileM: `(min-width: ${size.mobileM}px)`,
     tablet: `(min-width: ${size.tablet}px)`,

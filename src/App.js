@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BookShelf } from "./Components/Bookshelf/Bookshelf";
 import { GlobalStyle } from "./styles/global";
 
 
@@ -13,11 +14,14 @@ const LogoImage = styled.img`
   margin-top: 20px;
 `
 
+
+
 export function App() {
   return (
     <MainContainer>
       <GlobalStyle/>
       <LogoImage src="assets/logo.svg" alt="logoImage"/>
+      <BookShelf/>
     </MainContainer>
   );
 }
