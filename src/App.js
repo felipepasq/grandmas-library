@@ -1,11 +1,23 @@
+import styled from "styled-components";
+import { GlobalStyle } from "./styles/global";
 
 
-function App() {
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+const LogoImage = styled.img`
+  height: 200px;
+  margin-top: 20px;
+`
+
+export function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <MainContainer>
+      <GlobalStyle/>
+      <LogoImage src="assets/logo.svg" alt="logoImage"/>
+    </MainContainer>
   );
 }
-
-export default App;
