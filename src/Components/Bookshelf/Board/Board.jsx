@@ -6,19 +6,24 @@ background-size: 320px;
 height: 145px;
 width: 320px;
 position: absolute;
-left: 50%;
-margin-left: -160px;
-top: 65%;
-margin-top: -67.5px;
+bottom: 10px;
+`
+
+const GrandmasImage = styled.img`
+    position: absolute;
+    top: 30px;
+    transform: translateX(-50px);
+    z-index: 99;
 `
 
 export function Board() {
 
     return(
+    <>
         <BoardContainer>
-      
-      
         </BoardContainer>
+        <GrandmasImage src="assets/lady.svg"/>
+    </>
     )
 
 }

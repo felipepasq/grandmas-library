@@ -4,6 +4,10 @@ export const GlobalStyle = createGlobalStyle`
  * {
     margin: 0;
     padding: 0;  
-    height: 100%;
+    height: 100%; 
+    
 }
+
+
+
 `
