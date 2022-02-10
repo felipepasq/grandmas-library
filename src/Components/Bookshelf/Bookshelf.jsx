@@ -11,18 +11,12 @@ width: 400px;
 z-index: 1;
 margin-left: 70px;
 `
-const GrandmasImage = styled.img`
-    z-index: 999;
-`
+
 
 export function BookShelf () {
     return(
-        <>
         <BookShelfContainer>
-           
-        </BookShelfContainer>
         
-
-        </>
+        </BookShelfContainer>
     )
 }
