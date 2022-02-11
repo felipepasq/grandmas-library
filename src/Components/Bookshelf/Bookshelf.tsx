@@ -1,5 +1,6 @@
-    import styled from "styled-components"
-    import { Books } from "./Books"
+import { useState } from "react"
+import styled from "styled-components"
+import { topShelfBooks,bottomShelfBooks } from "./Books"
 
     const BookShelfContainer = styled.div`
         background-image: url(/assets/bookcase.svg);
@@ -42,27 +43,37 @@
 
     `
 interface Books {
-    id:Number,
-    title:String,
-    size:Number,
-    url:String
+    id:number,
+    title:string,
+    size:number,
+    url:string,
 }
 
     export function BookShelf () {
-        return(
+
+        const [topBooks,setTopBooks] = useState<Books[]>(topShelfBooks);
+        const [bottomBooks, setBottomBooks] = useState<Books[]>(bottomShelfBooks);
+
+        
+        return  (
             <BookShelfContainer>
             <TopShelf>
-                <Book>
-                    <img src="/assets/book_e.svg" alt="" />
-              
-                </Book>
-             
-             
+                {topBooks.map((value)=>{
+                    return (
+                    <Book key={value.title}>
+                        <img src={value.url} alt={value.title}/>
+                    </Book>
+                    )
+                })}       
             </TopShelf>
             <BottomShelf>
-                <Book>
-                    
-                </Book>
+            {bottomBooks.map((value)=>{
+                    return (
+                    <Book key={value.title}>
+                        <img src={value.url} alt={value.title}/>
+                    </Book>
+                    )
+                })}   
             </BottomShelf>
             </BookShelfContainer>
         )

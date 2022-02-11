@@ -1,4 +1,4 @@
-export const Books = [
+export const topShelfBooks = [
 
 {
     id:1,
@@ -42,25 +42,30 @@ export const Books = [
     url:'/assets/book_f.svg'
 },
 
-{
-    id:7,
-    title:'g',
-    size:2,
-    url:'/assets/book_g.svg'
-},
 
-{
-    id:8,
-    title:'h',
-    size:6,
-    url:'/assets/book_h.svg'
-},
-
-{
-    id:9,
-    title:'i',
-    size:4,
-    url:'/assets/book_i.svg'
-},
 
 ];
+
+
+export const bottomShelfBooks = [
+    {
+        id:7,
+        title:'g',
+        size:2,
+        url:'/assets/book_g.svg'
+    },
+    
+    {
+        id:8,
+        title:'h',
+        size:6,
+        url:'/assets/book_h.svg'
+    },
+    
+    {
+        id:9,
+        title:'i',
+        size:4,
+        url:'/assets/book_i.svg'
+    },
+]
