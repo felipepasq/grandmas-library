@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Board } from "./Components/Bookshelf/Board/Board";
+import { Board } from "./Components/Board/Board";
 import { BookShelf } from "./Components/Bookshelf/Bookshelf";
 import { GlobalStyle } from "./styles/global";
 

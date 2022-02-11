@@ -18,9 +18,9 @@ const PanelContainer = styled.div`
     height: fit-content;
 
     p {
-        font-size: 16px;
+        font-size: 14px;
         text-transform: uppercase;
-        margin-right: 30px;
+        margin-right: 35px;
         margin-bottom: 5px;
         letter-spacing: 3px;
         color: #cec8d5;
@@ -45,8 +45,8 @@ const ButtonContainer = styled.div`
   
     img {
         padding: 5px;
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     button { 
@@ -56,6 +56,26 @@ const ButtonContainer = styled.div`
         cursor: pointer;
     }
     
+`
+const OrganizeContainer = styled.div` 
+        border-top: 2px solid #E7DFEF;
+        width: 150px;
+        height: 45px;
+        margin-top: 5px;
+        padding-top: 5px;
+
+    img {
+        width: 150px;
+        height: auto;
+        border: 0;
+    }
+
+    button { 
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
 `
 
 const GrandmasImage = styled.img`
@@ -94,11 +114,18 @@ export function Board() {
                     <img src="/assets/filter_sizes.svg" alt="" />
                 </button>
                 </ButtonContainer>
-
+              
             </ButtonsRow>
+   
+            <OrganizeContainer>
+
+            <button>
+                    <img src="/assets/button.svg" alt="" />
+            </button>
+
+            </OrganizeContainer>
 
             </PanelContainer>
-
         </BoardContainer>
       <GrandmasImage src="assets/lady.svg"/>
     </>
