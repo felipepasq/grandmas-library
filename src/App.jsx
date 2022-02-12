@@ -23,6 +23,7 @@ const GroundContainer = styled.div`
 background-image: url('/assets/ground.svg');
 display: flex;
 flex-direction: column;
+position: relative;
 align-items: center;
 height: 45%;
 position: relative;
