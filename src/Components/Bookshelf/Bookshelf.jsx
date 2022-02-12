@@ -1,10 +1,12 @@
-import { useState } from "react"
-import styled from "styled-components"
-import { topShelfBooks,bottomShelfBooks } from "./Books"
+import { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
+import { Books } from "./Books";
 
     const BookShelfContainer = styled.div`
         background-image: url(/assets/bookcase.svg);
-        transform: translateY(-160px);
+        position: absolute;
+        bottom: 210px;
         background-size: 400px;
         display: flex;
         flex-direction: column;
@@ -15,24 +17,19 @@ import { topShelfBooks,bottomShelfBooks } from "./Books"
         padding-left: 20px;
     `
 
-    const TopShelf = styled.div`
+    const Shelf = styled.div`
+        border: 2px solid red;
         width: 70%;
         height: 75px;
         position: absolute;
-        top: 50px;
+        top: ${props=>props.bottomShelf?'150px':'50px'};
         display: inline-flex;
+        justify-content: ${props=>props.bottomShelf && 'flex-end'};
         padding: 0 2px 0;
+        min-width: 100px;
     `
 
-    const BottomShelf = styled.div`  
-        width: 70%;
-        height: 75px;
-        position: absolute;
-        top: 150px;
-        display: inline-flex;
-        justify-content: flex-end;
-        padding: 0 2px 0;
-    `
+ 
     const Book = styled.div`
      
         img{   
@@ -42,39 +39,62 @@ import { topShelfBooks,bottomShelfBooks } from "./Books"
         }
 
     `
-interface Books {
-    id:number,
-    title:string,
-    size:number,
-    url:string,
-}
 
     export function BookShelf () {
 
-        const [topBooks,setTopBooks] = useState<Books[]>(topShelfBooks);
-        const [bottomBooks, setBottomBooks] = useState<Books[]>(bottomShelfBooks);
+        const [topBooks,setTopBooks] = useState(Books);
+        const [bottomBooks,setBottomBooks] = useState([]);
+    
 
         
         return  (
             <BookShelfContainer>
-            <TopShelf>
-                {topBooks.map((value)=>{
-                    return (
-                    <Book key={value.title}>
-                        <img src={value.url} alt={value.title}/>
-                    </Book>
+            <DragDropContext>
+            <Shelf>
+                <Droppable droppableId="Shelf" direction="horizontal">
+                {(provided) => {
+                    return  (
+                        <div
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                        style={{
+                            display:"inline-flex"
+                        }}
+                        >
+                       {Books.map((value,index) => {
+                            return (
+                            <Draggable
+                            key={value.id}
+                            draggableId={value.id}
+                            index={index}
+                            >
+                                {(provided) => {
+                                    return (
+                                <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                >
+                                    <img src={value.url} alt={value.title}/>
+                                </div>
+                            
+                                    )
+                                }}
+                                
+                            </Draggable>
+                            );
+                        })}
+                         {provided.placeholder}
+                        </div>
                     )
-                })}       
-            </TopShelf>
-            <BottomShelf>
-            {bottomBooks.map((value)=>{
-                    return (
-                    <Book key={value.title}>
-                        <img src={value.url} alt={value.title}/>
-                    </Book>
-                    )
-                })}   
-            </BottomShelf>
+                }}
+                </Droppable>       
+            </Shelf>
+
+            
+
+            </DragDropContext>
+           
             </BookShelfContainer>
         )
     }
