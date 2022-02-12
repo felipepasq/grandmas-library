@@ -35,6 +35,12 @@ export const Books = [
         url:'/assets/book_e.svg',
     },
     
+   
+    
+    ];
+    
+    export const Books2 = [
+    
     {
         id:"6",
         title:'f',
@@ -60,9 +66,5 @@ export const Books = [
         size:4,
         url:'/assets/book_i.svg',
     },
-    
-    ];
-    
-    
-  
+    ]
     
