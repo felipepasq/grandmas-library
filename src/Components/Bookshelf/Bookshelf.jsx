@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { useBook } from "../Board/BoardContext";
 import { Books } from "./Books";
+
+
 
     const BookShelfContainer = styled.div`
         background-image: url(/assets/bookcase.svg);
@@ -43,71 +46,20 @@ import { Books } from "./Books";
 
     export function BookShelf () {
 
-        const [topBooks,setTopBooks] = useState(Books.filter((book)=>book.shelf ==='1'));
-        const [bottomBooks,setBottomBooks] = useState(Books.filter((book)=>book.shelf ==='2'));
-
-
-
-        function addBookOnSpecificPosition (destination,source,destinationIndex,sourceIndex){
-
-            const [reorderedList] = source.splice(sourceIndex,1);
-            destination.splice(destinationIndex,0,reorderedList);
-
-        }
-        
-        function swapShelf(operation,result){
-
-            if(operation ==='topToBottom') {
-            const destination = bottomBooks;
-            const source = topBooks;
-            addBookOnSpecificPosition(destination,source,result.destination.index,result.source.index)
-            setBottomBooks(destination)
-            setTopBooks(source)
-            
-        }
-
-            else {
-            const destination = topBooks;
-            const source = bottomBooks;
-            addBookOnSpecificPosition(destination,source,result.destination.index,result.source.index)
-            setTopBooks(destination)
-            setBottomBooks(source)
-            
-        }
-
-            }
         
 
-        function handleOnDragEnd (result) {
-           
-            const {destination,source} = result;
-           
-            if(!destination) return;
-
-            if(destination.droppableId === source.droppableId && source.droppableId ==='topShelf')  {
-            addBookOnSpecificPosition(topBooks,topBooks,result.destination.index,result.source.index)
-            setTopBooks(topBooks)
-        }
-
-            if(destination.droppableId === source.droppableId && source.droppableId ==='bottomShelf')   {
-            addBookOnSpecificPosition(bottomBooks,bottomBooks,result.destination.index,result.source.index)
-            setBottomBooks(bottomBooks)
-        }
-
-
-            if(destination.droppableId !== source.droppableId && destination.droppableId ==='bottomShelf')  { 
-            swapShelf('topToBottom',result)
-        }
-
-            if(destination.droppableId !== source.droppableId && destination.droppableId ==='topShelf')  { 
-            swapShelf('bottomToTop',result)    
-        }
-        
-      
-        }
+       const {
+        topBooks,
+        bottomBooks,
+        handleOnDragEnd,
+        setTopBooks
+       } = useBook();
        
        
-       
+
+       useEffect(()=>{
+        setTopBooks(Books)
+       })
         
         return  (
             <BookShelfContainer>

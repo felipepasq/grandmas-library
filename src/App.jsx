@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Board } from "./Components/Board/Board";
+import { BoookProvider } from "./Components/Board/BoardContext";
 import { BookShelf } from "./Components/Bookshelf/Bookshelf";
 import { GlobalStyle } from "./styles/global";
 
@@ -32,17 +33,23 @@ position: relative;
 
 
 export function App() {
-  return (
+  return ( 
+  
     <Wrapper>
+     
     <GlobalStyle/>
     <TopContainer>
       <LogoImage src="assets/logo.svg" alt="logoImage"/>
     </TopContainer>
     <GroundContainer> 
+    <BoookProvider>
       <BookShelf/>
       <Board/> 
+      </BoookProvider>
     </GroundContainer>
+   
     </Wrapper>
+    
     
   );
 }
