@@ -1,4 +1,4 @@
-import {  createContext,useEffect,useState } from "react";
+import {  createContext,useState } from "react";
 import { useContext } from "react";
 
 
@@ -70,12 +70,48 @@ export function BoookProvider (props) {
     
   
     }
+    
+    function orderBooks (operation) {
+        
+       
+        if(operation === 'title') {
+            
+            const orderedTopBooks = [topBooks.sort((a, b) => (a.id > b.id ? 1 : -1))];
+           
+
+
+            setTopBooks(orderedTopBooks)
+            setBottomBooks([bottomBooks.sort((a, b) => (a.id > b.id ? 1 : -1))]) 
+        
+    
+        }
+
+        if(operation === 'size') {
+
+            const orderedTopBooks = [topBooks.sort((a, b) => (a.size > b.size ? 1 : -1))];
+        
+
+            setTopBooks(orderedTopBooks) 
+            
+
+        }
+
+        if(operation === 'color') {
+
+            setTopBooks([topBooks.sort((a, b) => (a.color > b.color ? 1 : -1))])
+          
+
+            
+        }
+        
+        
+    }
 
 
     return (
     
       
-        <BookContext.Provider value={{topBooks,bottomBooks,setTopBooks, addBookOnSpecificPosition, swapShelf, handleOnDragEnd  }}>
+        <BookContext.Provider value={{topBooks,bottomBooks,setTopBooks, addBookOnSpecificPosition, swapShelf, handleOnDragEnd, orderBooks  }}>
             {children}
         </BookContext.Provider>
         

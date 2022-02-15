@@ -3,71 +3,80 @@ export const Books = [
     {
         id:"1",
         title:'a',
-        size:5,
+        size:"5",
         url:'/assets/book_a.svg',
         shelf:'1',
+        color:'3'
     },
     
     {
         id:"2",
         title:'b',
-        size:3,
+        size:"3",
         url:'/assets/book_b.svg',
-        shelf:'1'
+        shelf:'1',
+        color:'1'
     },
     
     {
         id:"3",
         title:'c',
-        size:6,
+        size:"6",
         url:'/assets/book_c.svg',
-        shelf:'1'
+        shelf:'1',
+        color:'2'
     },
     
     {
         id:"4",
         title:'d',
-        size:6,
+        size:"6",
         url:'/assets/book_d.svg',
-        shelf:'1'
+        shelf:'1',
+        color:'9'
     },
     
     {
         id:"5",
         title:'e',
-        size:1,
+        size:"1",
         url:'/assets/book_e.svg',
-        shelf:'1'
+        shelf:'1',
+        color:'5'
     },
     
     {
         id:"6",
         title:'f',
-        size:2,
+        size:"2",
         url:'/assets/book_f.svg',
-        shelf:'1'
+        shelf:'1',
+        color:'7'
     },
     
     {
         id:"7",
         title:'g',
-        size:2,
+        size:"2",
         url:'/assets/book_g.svg',
-        shelf:'2'
+        shelf:'2',
+        color:'8'
     },
     {
         id:"8",
         title:'h',
-        size:2,
+        size:"6",
         url:'/assets/book_h.svg',
-        shelf:'2'
+        shelf:'2',
+        color:'6'
     },
     {
         id:"9",
         title:'i',
-        size:4,
+        size:"4",
         url:'/assets/book_i.svg',
-        shelf:'2'
+        shelf:'2',
+        color:'4'
         
     },
    

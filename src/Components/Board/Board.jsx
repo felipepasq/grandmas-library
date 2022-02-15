@@ -1,12 +1,27 @@
 import styled from "styled-components";
+import { useBook } from "../../Contexts/BoardContext";
+import devices from "../../utils/devices";
 
 const BoardContainer = styled.div`
     background-image: url('/assets/board.svg');
+  
     background-size: 330px;
     height: 150px;
     width: 330px;
     position: absolute;
     bottom: 10px;
+
+    @media ${devices.tablet}{
+        
+        transform: translateX(-260px);
+        background-size: 400px;
+        position: absolute;
+        height:184px;
+        width: 403px;
+        bottom:45px;
+    }
+
+
 `
 const PanelContainer = styled.div`
     display: flex;
@@ -55,19 +70,30 @@ const ButtonContainer = styled.div`
         background: none;
         cursor: pointer;
     }
-    
+
+    @media ${devices.tablet}{
+        background-size:53px;
+        width: 58px;
+        height: 58px;
+        
+    }
+   
 `
 const OrganizeContainer = styled.div` 
         border-top: 2px solid #E7DFEF;
-        width: 150px;
+        width: fit-content;
         height: 45px;
         margin-top: 5px;
         padding-top: 5px;
 
     img {
-        width: 150px;
+        width: 150px;  
         height: auto;
         border: 0;
+
+        @media ${devices.tablet}{
+        width: 180px;        
+        }
     }
 
     button { 
@@ -75,6 +101,13 @@ const OrganizeContainer = styled.div`
         border: none;
         background: none;
         cursor: pointer;
+
+        @media ${devices.tablet}{
+        
+        
+    }
+
+
     }
 `
 
@@ -84,9 +117,20 @@ const GrandmasImage = styled.img`
     transform: translateX(-80px);
     z-index: 99;
     height: 225px;
+
+    @media ${devices.tablet}{
+        height:420px;
+        transform: translateX(-390px);
+    }
 `
 
 export function Board() {
+
+    const {
+        orderBooks,
+       } = useBook();
+
+
 
     return  (
     <>
@@ -98,18 +142,18 @@ export function Board() {
             <ButtonsRow>
 
                 <ButtonContainer>
-                <button>
+                <button onClick={()=>orderBooks('title')}>
                     <img src="/assets/filter_alphabetic.svg" alt=""/>
                 </button>
                 </ButtonContainer>
 
-                <ButtonContainer>
+                <ButtonContainer onClick={()=>orderBooks('color')}>
                     <button>
                     <img src="/assets/filter_colors.svg" alt="" />
                     </button>
                 </ButtonContainer>
 
-                <ButtonContainer>
+                <ButtonContainer onClick={()=>orderBooks('size')}>
                 <button>
                     <img src="/assets/filter_sizes.svg" alt="" />
                 </button>

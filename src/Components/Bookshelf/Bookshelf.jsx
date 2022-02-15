@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { useBook } from "../Board/BoardContext";
-import { Books } from "./Books";
+import { useBook } from "../../Contexts/BoardContext";
+import { Books } from "../../Books";
+import devices from "../../utils/devices";
 
 
 
     const BookShelfContainer = styled.div`
         background-image: url(/assets/bookcase.svg);
-       
         margin-top: -155px;
         background-size: 400px;
         display: flex;
@@ -18,17 +18,34 @@ import { Books } from "./Books";
         z-index: 1;
         margin-left: 70px;
         padding-left: 20px;
+
+
+        @media ${devices.tablet}{
+        height: 338px;
+        width: 550px;
+        background-size: 550px;
+        margin-top: -220px;
+        padding-left: 30px;
+        }
     `
 
     const Shelf = styled.div`
         width: fit-content;
         height: 75px;
         margin-top: ${props=>props.bottomShelf?'22px':'50px'};
-        top: ${props=>props.bottomShelf?'150px':'50px'};
+      
         display: inline-flex;
         justify-content: ${props=>props.bottomShelf && 'flex-end'};
         padding: 0 2px 0;
         min-width: 278px;
+
+        @media ${devices.tablet}{
+           margin-top: ${props=>props.bottomShelf?'31px':'67px'};
+           width: 380px;
+           height: 105px;
+        }
+
+
     `
 
  
@@ -38,6 +55,11 @@ import { Books } from "./Books";
             height: 75px;
             width: 26.666px;
             object-fit: fill;
+
+            @media ${devices.tablet}{
+                height:106px;
+                width: 35.666px;
+        }
         }
 
     `
@@ -102,7 +124,7 @@ import { Books } from "./Books";
                     )
                 }}
                 </Droppable>   
-
+                
                 <Droppable droppableId="bottomShelf" direction="horizontal">
                 {(provided) => {
                     return  (
