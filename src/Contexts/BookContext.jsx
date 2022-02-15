@@ -1,22 +1,26 @@
 import {  createContext,useState } from "react";
 import { useContext } from "react";
+import { Books } from "../Books";
 
 
-export const BookContext = createContext();
+export const BookContext = createContext({});
 
-
+const byKey = (a,b,key) => (a[key] > b[key] ? 1 : -1)
 
 export function BoookProvider (props) {
 
-    const [topBooks,setTopBooks] = useState([]);
+    const [topBooks,setTopBooks] = useState(Books);
     const [bottomBooks,setBottomBooks] = useState([]);
+    const [testString,setString] = useState('alo')
     const {children} = props;
-  
+    
+    
 
     function addBookOnSpecificPosition (destination,source,destinationIndex,sourceIndex){
 
         const [reorderedList] = source.splice(sourceIndex,1);
         destination.splice(destinationIndex,0,reorderedList);
+        
 
     }
 
@@ -26,8 +30,8 @@ export function BoookProvider (props) {
         const destination = bottomBooks;
         const source = topBooks;
         addBookOnSpecificPosition(destination,source,result.destination.index,result.source.index)
-        setBottomBooks(destination)
-        setTopBooks(source)
+        setBottomBooks([...destination])
+        setTopBooks([...source])
         
     }
 
@@ -35,8 +39,8 @@ export function BoookProvider (props) {
         const destination = topBooks;
         const source = bottomBooks;
         addBookOnSpecificPosition(destination,source,result.destination.index,result.source.index)
-        setTopBooks(destination)
-        setBottomBooks(source)
+        setTopBooks([...destination])
+        setBottomBooks([...source])
         
     }
 
@@ -51,12 +55,12 @@ export function BoookProvider (props) {
 
         if(destination.droppableId === source.droppableId && source.droppableId ==='topShelf')  {
         addBookOnSpecificPosition(topBooks,topBooks,result.destination.index,result.source.index)
-        setTopBooks(topBooks)
+        setTopBooks([...topBooks])
     }
 
         if(destination.droppableId === source.droppableId && source.droppableId ==='bottomShelf')   {
         addBookOnSpecificPosition(bottomBooks,bottomBooks,result.destination.index,result.source.index)
-        setBottomBooks(bottomBooks)
+        setBottomBooks([...bottomBooks])
     }
 
 
@@ -73,45 +77,23 @@ export function BoookProvider (props) {
     
     function orderBooks (operation) {
         
-       
-        if(operation === 'title') {
-            
-            const orderedTopBooks = [topBooks.sort((a, b) => (a.id > b.id ? 1 : -1))];
-           
+        const orderedBottomBooks = bottomBooks.sort((a, b) => byKey(a,b,operation));
+        const orderedTopBooks = topBooks.sort((a, b) => byKey(a,b,operation));
+     
+        setTopBooks([...orderedTopBooks]);
+        setBottomBooks([...orderedBottomBooks])
 
 
-            setTopBooks(orderedTopBooks)
-            setBottomBooks([bottomBooks.sort((a, b) => (a.id > b.id ? 1 : -1))]) 
-        
-    
-        }
-
-        if(operation === 'size') {
-
-            const orderedTopBooks = [topBooks.sort((a, b) => (a.size > b.size ? 1 : -1))];
-        
-
-            setTopBooks(orderedTopBooks) 
-            
-
-        }
-
-        if(operation === 'color') {
-
-            setTopBooks([topBooks.sort((a, b) => (a.color > b.color ? 1 : -1))])
-          
-
-            
-        }
-        
-        
     }
+   
 
+
+   
 
     return (
     
       
-        <BookContext.Provider value={{topBooks,bottomBooks,setTopBooks, addBookOnSpecificPosition, swapShelf, handleOnDragEnd, orderBooks  }}>
+        <BookContext.Provider value={{topBooks,bottomBooks,setTopBooks, addBookOnSpecificPosition, swapShelf, handleOnDragEnd, orderBooks,testString,setString  }}>
             {children}
         </BookContext.Provider>
         

@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { useBook } from "../../Contexts/BoardContext";
-import { Books } from "../../Books";
+import { useBook } from "../../Contexts/BookContext";
 import devices from "../../utils/devices";
 
 
@@ -74,17 +72,19 @@ import devices from "../../utils/devices";
         topBooks,
         bottomBooks,
         handleOnDragEnd,
-        setTopBooks
        } = useBook();
        
-       
 
-       useEffect(()=>{
-        setTopBooks(Books)
-       })
+      
+       
+      
+
+  
+     
         
         return  (
             <BookShelfContainer>
+               
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId="topShelf" direction="horizontal">
                 {(provided) => {
@@ -97,7 +97,8 @@ import devices from "../../utils/devices";
                         }}
                         >
                        {topBooks.map((value,index) => {
-                            return (
+                           
+                            return ( 
                             <Draggable
                             key={value.title}
                             draggableId={value.title}

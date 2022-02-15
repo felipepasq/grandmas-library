@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Board } from "./Components/Board/Board";
-import { BoookProvider } from "./Contexts/BoardContext";
+import { BoookProvider } from "./Contexts/BookContext";
 import { BookShelf } from "./Components/Bookshelf/Bookshelf";
 import { GlobalStyle } from "./styles/global";
 import device from './utils/devices'
