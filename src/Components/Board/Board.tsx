@@ -52,8 +52,14 @@ const ButtonsRow = styled.div`
         gap: 10px;
     
     `;
-const ButtonContainer = styled.div`
-        background-image:url('/assets/filter_button.svg') ;
+
+interface buttonContainerProps {
+  isActive:boolean;
+}
+
+const ButtonContainer = styled.div<buttonContainerProps>`
+       
+        background-image: url(${(props) => (props.isActive ? '/assets/filter_button_active.svg' : '/assets/filter_button.svg')});
         background-size: 40px;
         width: 43px;
         height: 45px;
@@ -133,6 +139,9 @@ export function Board() {
   const {
     orderBooks,
     handleClick,
+    isTitleActive,
+    isColorActive,
+    isSizeActive,
   } = useBook();
 
   return (
@@ -144,19 +153,19 @@ export function Board() {
           <p>Sort By</p>
           <ButtonsRow>
 
-            <ButtonContainer onClick={() => handleClick('title')}>
+            <ButtonContainer isActive={isTitleActive} onClick={() => handleClick('title')}>
               <button type="button">
                 <img src="/assets/filter_alphabetic.svg" alt="" />
               </button>
             </ButtonContainer>
 
-            <ButtonContainer onClick={() => handleClick('color')}>
+            <ButtonContainer isActive={isColorActive} onClick={() => handleClick('color')}>
               <button type="button">
                 <img src="/assets/filter_colors.svg" alt="" />
               </button>
             </ButtonContainer>
 
-            <ButtonContainer onClick={() => handleClick('size')}>
+            <ButtonContainer isActive={isSizeActive} onClick={() => handleClick('size')}>
               <button type="button">
                 <img src="/assets/filter_sizes.svg" alt="" />
               </button>
