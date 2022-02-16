@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { useBook } from "../../Contexts/BookContext";
 import devices from "../../utils/devices";
 
-
+    interface shelfProps {
+        bottomShelf:string;
+    }
 
     const BookShelfContainer = styled.div`
         background-image: url(/assets/bookcase.svg);
@@ -28,7 +30,7 @@ import devices from "../../utils/devices";
         }
     `
 
-    const Shelf = styled.div`
+    const Shelf = styled.div<shelfProps>`
         width: fit-content;
         height: 75px;
         margin-top: ${props=>props.bottomShelf?'22px':'50px'};
@@ -80,7 +82,7 @@ import devices from "../../utils/devices";
                
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId="topShelf" direction="horizontal">
-                {(provided) => {
+                {(provided:any) => {
                     return  (
                         <Shelf
                         {...provided.droppableProps}
@@ -97,7 +99,7 @@ import devices from "../../utils/devices";
                             draggableId={value.title}
                             index={index}
                             >
-                                {(provided) => {
+                                {(provided :any) => {
                                     return (
                                 <Book
                                 ref={provided.innerRef}
@@ -120,7 +122,7 @@ import devices from "../../utils/devices";
                 </Droppable>   
                 
                 <Droppable droppableId="bottomShelf" direction="horizontal">
-                {(provided) => {
+                {(provided :any) => {
                     return  (
                         <Shelf bottomShelf
                         {...provided.droppableProps}
@@ -136,7 +138,7 @@ import devices from "../../utils/devices";
                             draggableId={value.title}
                             index={index}
                             >
-                                {(provided) => {
+                                {(provided :any) => {
                                     return (
                                 <Book
                                 ref={provided.innerRef}
