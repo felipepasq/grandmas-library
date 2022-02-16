@@ -1,11 +1,13 @@
 # GrandmasLibrary
 
 **Front end test for Vizpert **
-<p align="center">
-  <img  height="300" src="https://github.com/felipepasq/grandmas-library/blob/master/public/assets/librarymobile.jpg">
-</p>
+*Desktop*
 <p align="center">
   <img  height="300" src="https://github.com/felipepasq/grandmas-library/blob/master/public/assets/libraryweb.png">
+</p>
+*Mobile*
+<p align="center">
+  <img  height="300" src="https://github.com/felipepasq/grandmas-library/blob/master/public/assets/librarymobile.jpg">
 </p>
 
 ## About
