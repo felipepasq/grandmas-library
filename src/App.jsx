@@ -39,7 +39,7 @@ const ClockImage = styled.img`
   margin-top: 15px;
   @media ${device.tablet} {
     display: block;
-    height: 300px;
+    height: 250px;
   }
 `
 
@@ -49,7 +49,7 @@ const LogoImage = styled.img`
  
   @media ${device.tablet} {
     display: block;
-    height: 300px;
+    height: 250px;
     margin-top: 15px;
     margin-right: 10%;
   }
@@ -67,24 +67,24 @@ position: relative;
 
 
 export function App() {
-  return ( 
-  
+  return (
+
     <Wrapper>
-     <BoookProvider>
-    <GlobalStyle/>
-    <TopContainer>
-    <ClockContainer>
-      <ClockImage src="assets/clock_base.svg" alt="clockImage"/>
-    </ClockContainer>
-      <LogoImage src="assets/logo.svg" alt="logoImage"/>
-    </TopContainer>
-    <GroundContainer> 
-      <BookShelf/>
-      <Board/> 
-    </GroundContainer>
-    </BoookProvider>
+      <BoookProvider>
+        <GlobalStyle />
+        <TopContainer>
+          <ClockContainer>
+            <ClockImage src="assets/clock_base.svg" alt="clockImage" />
+          </ClockContainer>
+          <LogoImage src="assets/logo.svg" alt="logoImage" />
+        </TopContainer>
+        <GroundContainer>
+          <BookShelf />
+          <Board />
+        </GroundContainer>
+      </BoookProvider>
     </Wrapper>
-    
-    
+
+
   );
 }
