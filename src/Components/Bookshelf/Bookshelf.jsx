@@ -16,6 +16,7 @@ import devices from "../../utils/devices";
         z-index: 1;
         margin-left: 70px;
         padding-left: 20px;
+        background-repeat: no-repeat;
 
 
         @media ${devices.tablet}{
@@ -73,14 +74,6 @@ import devices from "../../utils/devices";
         bottomBooks,
         handleOnDragEnd,
        } = useBook();
-       
-
-      
-       
-      
-
-  
-     
         
         return  (
             <BookShelfContainer>

@@ -11,7 +11,10 @@ export function BoookProvider (props) {
 
     const [topBooks,setTopBooks] = useState(Books);
     const [bottomBooks,setBottomBooks] = useState([]);
-    const [testString,setString] = useState('alo')
+    const [isColorActive, setIsColorActive] = useState(false);
+    const [isSizeActive, setIsSizeActive] = useState(false);
+    const [isTitleActive, setIsTitleActive] = useState(false);
+
     const {children} = props;
     
     
@@ -75,25 +78,80 @@ export function BoookProvider (props) {
   
     }
     
-    function orderBooks (operation) {
+    function orderBooks () {
         
-        const orderedBottomBooks = bottomBooks.sort((a, b) => byKey(a,b,operation));
-        const orderedTopBooks = topBooks.sort((a, b) => byKey(a,b,operation));
+
+        if(isTitleActive){
+            const orderedBottomBooks = bottomBooks.sort((a, b) => byKey(a,b,'title'));
+            const orderedTopBooks = topBooks.sort((a, b) => byKey(a,b,'title'));
+
+            setTopBooks([...orderedTopBooks]);
+            setBottomBooks([...orderedBottomBooks])
+        }
+
+        if(isSizeActive){
+            const orderedBottomBooks = bottomBooks.sort((a, b) => byKey(a,b,'size'));
+            const orderedTopBooks = topBooks.sort((a, b) => byKey(a,b,'size'));
+
+            setTopBooks([...orderedTopBooks]);
+            setBottomBooks([...orderedBottomBooks])
+        }
+
+        if(isColorActive){
+            const orderedBottomBooks = bottomBooks.sort((a, b) => byKey(a,b,'color'));
+            const orderedTopBooks = topBooks.sort((a, b) => byKey(a,b,'color'));
+
+            setTopBooks([...orderedTopBooks]);
+            setBottomBooks([...orderedBottomBooks])
+        }
      
-        setTopBooks([...orderedTopBooks]);
-        setBottomBooks([...orderedBottomBooks])
-
-
     }
-   
+
+        function handleClick(operation) {
+
+            if(operation === 'title'){
+                setIsTitleActive(true);
+                setIsSizeActive(false);
+                setIsColorActive(false);
+            }
+
+            if(operation === 'color'){
+                setIsTitleActive(false);
+                setIsSizeActive(false);
+                setIsColorActive(true);
+            }
+
+            if(operation === 'size'){
+                setIsTitleActive(false);
+                setIsSizeActive(true);
+                setIsColorActive(false);
+            }
 
 
-   
+        }
+
+
 
     return (
     
       
-        <BookContext.Provider value={{topBooks,bottomBooks,setTopBooks, addBookOnSpecificPosition, swapShelf, handleOnDragEnd, orderBooks,testString,setString  }}>
+        <BookContext.Provider value={{
+            topBooks,
+            bottomBooks,
+            isTitleActive,
+            isColorActive,
+            isSizeActive,
+            setIsTitleActive,
+            setIsColorActive,
+            setIsSizeActive,
+            setTopBooks, 
+            addBookOnSpecificPosition, 
+            swapShelf, 
+            handleOnDragEnd,
+            handleClick, 
+            orderBooks,
+          
+            }}>
             {children}
         </BookContext.Provider>
         

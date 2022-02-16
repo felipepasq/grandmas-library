@@ -1,4 +1,3 @@
-    import { useState } from "react";
     import styled from "styled-components";
     import { useBook } from "../../Contexts/BookContext";
     import devices from "../../utils/devices";
@@ -132,15 +131,17 @@
 
     export function Board() {
 
-        const {isColorActive, setIsColorActive} = useState(false);
-        const {isSizeActive, setIsSizeActive} = useState(false);
-        const {isTitleActive, setIsTitleActive} = useState(false);
+        
 
         const {
             orderBooks,
+            isTitleActive,
+            isColorActive,
+            isSizeActive,
+            handleClick
         } = useBook();
 
-
+       
 
         return  (
         <>
@@ -151,19 +152,19 @@
                 <p>Sort By</p>
                 <ButtonsRow>
 
-                    <ButtonContainer>
-                    <button onClick={()=>orderBooks('title')}>
+                    <ButtonContainer onClick={()=>handleClick('title')} isActive={isTitleActive}>
+                    <button>
                         <img src="/assets/filter_alphabetic.svg" alt=""/>
                     </button>
                     </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>orderBooks('color')}>
+                    <ButtonContainer onClick={()=>handleClick('color')} isActive={isColorActive}>
                         <button>
                         <img src="/assets/filter_colors.svg" alt="" />
                         </button>
                     </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>orderBooks('size')}>
+                    <ButtonContainer onClick={()=>handleClick('size')} isActive={isSizeActive}>
                     <button>
                         <img src="/assets/filter_sizes.svg" alt="" />
                     </button>
@@ -173,7 +174,7 @@
     
                 <OrganizeContainer>
 
-                <button>
+                <button onClick={()=>orderBooks()}>
                         <img src="/assets/button.svg" alt="" />
                 </button>
 
