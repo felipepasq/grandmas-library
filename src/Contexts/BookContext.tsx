@@ -1,13 +1,46 @@
-import {  createContext,useState } from "react";
+import {  createContext,ReactNode,useState } from "react";
 import { useContext } from "react";
 import { Books } from "../Books";
 
 
-export const BookContext = createContext({});
+interface Book  {
+    id:string,
+    title:string,
+    size:string,
+    url:string,
+    color:string
+}
 
-const byKey = (a,b,key) => (a[key] > b[key] ? 1 : -1)
 
-export function BoookProvider (props) {
+
+
+interface BookContextData {
+    topBooks:Book[];
+    bottomBooks:Book[];
+    isColorActive:boolean;
+    isSizeActive:boolean;
+    isTitleActive:boolean;
+    addBookOnSpecificPosition:(destination:any,source:any,destinationIndex:number,sourceIndex:number) => void;
+    swapShelf:(operation:string,result:any) => void;
+    handleOnDragEnd:(result:any)=>void;
+    orderBooks:()=>void;
+    setIsTitleActive:(state:boolean) => void;
+    setIsColorActive:(state:boolean) => void;
+    setIsSizeActive:(state:boolean) => void;
+    handleClick:(operation:string) => void;
+
+}
+
+
+export const BookContext = createContext({} as BookContextData );
+
+type BookContextProviderProps = {
+    children:ReactNode;
+}
+
+const byKey = (a:any,b:any,key:string) => (a[key] > b[key] ? 1 : -1)
+
+export function BoookProvider ({children}: BookContextProviderProps) {
 
     const [topBooks,setTopBooks] = useState(Books);
     const [bottomBooks,setBottomBooks] = useState([]);
@@ -15,11 +48,11 @@ export function BoookProvider (props) {
     const [isSizeActive, setIsSizeActive] = useState(false);
     const [isTitleActive, setIsTitleActive] = useState(false);
 
-    const {children} = props;
+   
     
     
 
-    function addBookOnSpecificPosition (destination,source,destinationIndex,sourceIndex){
+    function addBookOnSpecificPosition (destination:any,source:any,destinationIndex:number,sourceIndex:number){
 
         const [reorderedList] = source.splice(sourceIndex,1);
         destination.splice(destinationIndex,0,reorderedList);
@@ -27,7 +60,7 @@ export function BoookProvider (props) {
 
     }
 
-    function swapShelf(operation,result){
+    function swapShelf(operation:string,result:any){
 
         if(operation ==='topToBottom') {
         const destination = bottomBooks;
@@ -50,10 +83,10 @@ export function BoookProvider (props) {
         }
     
 
-    function handleOnDragEnd (result) {
+    function handleOnDragEnd (result:any) {
        
         const {destination,source} = result;
-       
+        console.log(result)
         if(!destination) return;
 
         if(destination.droppableId === source.droppableId && source.droppableId ==='topShelf')  {
@@ -107,7 +140,7 @@ export function BoookProvider (props) {
      
     }
 
-        function handleClick(operation) {
+        function handleClick(operation:string) {
 
             if(operation === 'title'){
                 setIsTitleActive(true);
@@ -144,7 +177,6 @@ export function BoookProvider (props) {
             setIsTitleActive,
             setIsColorActive,
             setIsSizeActive,
-            setTopBooks, 
             addBookOnSpecificPosition, 
             swapShelf, 
             handleOnDragEnd,

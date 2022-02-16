@@ -5,7 +5,6 @@ export const Books = [
         title:'a',
         size:"5",
         url:'/assets/book_a.svg',
-        shelf:'1',
         color:'3'
     },
     
@@ -14,7 +13,6 @@ export const Books = [
         title:'b',
         size:"3",
         url:'/assets/book_b.svg',
-        shelf:'1',
         color:'1'
     },
     
@@ -23,7 +21,6 @@ export const Books = [
         title:'c',
         size:"6",
         url:'/assets/book_c.svg',
-        shelf:'1',
         color:'2'
     },
     
@@ -32,7 +29,6 @@ export const Books = [
         title:'d',
         size:"6",
         url:'/assets/book_d.svg',
-        shelf:'1',
         color:'9'
     },
     
@@ -41,7 +37,6 @@ export const Books = [
         title:'e',
         size:"1",
         url:'/assets/book_e.svg',
-        shelf:'1',
         color:'5'
     },
     
@@ -50,7 +45,6 @@ export const Books = [
         title:'f',
         size:"2",
         url:'/assets/book_f.svg',
-        shelf:'1',
         color:'7'
     },
     
@@ -59,7 +53,6 @@ export const Books = [
         title:'g',
         size:"2",
         url:'/assets/book_g.svg',
-        shelf:'2',
         color:'8'
     },
     {
@@ -67,7 +60,6 @@ export const Books = [
         title:'h',
         size:"6",
         url:'/assets/book_h.svg',
-        shelf:'2',
         color:'6'
     },
     {
@@ -75,7 +67,6 @@ export const Books = [
         title:'i',
         size:"4",
         url:'/assets/book_i.svg',
-        shelf:'2',
         color:'4'
         
     },

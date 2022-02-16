@@ -27,7 +27,7 @@ const TopContainer = styled.div`
 const ClockContainer = styled.div`
   margin: 0 auto 0 10%;
   display: none;
-
+  position: relative;
 
   @media ${device.tablet} {
     display: block;
@@ -37,10 +37,20 @@ const ClockContainer = styled.div`
 const ClockImage = styled.img`
   height: 200px;
   margin-top: 15px;
+  
   @media ${device.tablet} {
     display: block;
     height: 300px;
   }
+`
+const CLockPointer = styled.div `
+  height: 120px;
+  width: 80px;
+  border-left: 6px solid #9B6DBF;
+  border-bottom: 6px solid #9B6DBF;
+  position: absolute;
+  top: 45px;
+  left: 140px;
 `
 
 
@@ -75,6 +85,7 @@ export function App() {
     <TopContainer>
     <ClockContainer>
       <ClockImage src="assets/clock_base.svg" alt="clockImage"/>
+      <CLockPointer/>
     </ClockContainer>
       <LogoImage src="assets/logo.svg" alt="logoImage"/>
     </TopContainer>

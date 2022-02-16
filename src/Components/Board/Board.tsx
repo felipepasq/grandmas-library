@@ -135,9 +135,6 @@
 
         const {
             orderBooks,
-            isTitleActive,
-            isColorActive,
-            isSizeActive,
             handleClick
         } = useBook();
 
@@ -152,19 +149,19 @@
                 <p>Sort By</p>
                 <ButtonsRow>
 
-                    <ButtonContainer onClick={()=>handleClick('title')} isActive={isTitleActive}>
+                    <ButtonContainer onClick={()=>handleClick('title')} >
                     <button>
                         <img src="/assets/filter_alphabetic.svg" alt=""/>
                     </button>
                     </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>handleClick('color')} isActive={isColorActive}>
+                    <ButtonContainer onClick={()=>handleClick('color')} >
                         <button>
                         <img src="/assets/filter_colors.svg" alt="" />
                         </button>
                     </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>handleClick('size')} isActive={isSizeActive}>
+                    <ButtonContainer onClick={()=>handleClick('size')} >
                     <button>
                         <img src="/assets/filter_sizes.svg" alt="" />
                     </button>
