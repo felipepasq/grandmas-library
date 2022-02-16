@@ -1,14 +1,13 @@
-import styled from "styled-components";
-import { Board } from "./Components/Board/Board";
-import { BoookProvider } from "./Contexts/BookContext";
-import { BookShelf } from "./Components/Bookshelf/Bookshelf";
-import { GlobalStyle } from "./styles/global";
-import device from './utils/devices'
-
+import styled from 'styled-components';
+import { Board } from './Components/Board/Board';
+import { BoookProvider } from './Contexts/BookContext';
+import { BookShelf } from './Components/Bookshelf/Bookshelf';
+import { GlobalStyle } from './styles/global';
+import device from './utils/devices';
 
 const Wrapper = styled.div`
   overflow: hidden;
-`
+`;
 const TopContainer = styled.div`
   background-image: url('/assets/bg_stripes.svg');
   display: flex;
@@ -23,7 +22,7 @@ const TopContainer = styled.div`
    }
 
 
-`
+`;
 const ClockContainer = styled.div`
   margin: 0 auto 0 10%;
   display: none;
@@ -33,7 +32,7 @@ const ClockContainer = styled.div`
     display: block;
     
   }
-`
+`;
 const ClockImage = styled.img`
   height: 200px;
   margin-top: 15px;
@@ -42,8 +41,8 @@ const ClockImage = styled.img`
     display: block;
     height: 300px;
   }
-`
-const CLockPointer = styled.div `
+`;
+const CLockPointer = styled.div`
   height: 120px;
   width: 80px;
   border-left: 6px solid #9B6DBF;
@@ -51,8 +50,7 @@ const CLockPointer = styled.div `
   position: absolute;
   top: 45px;
   left: 140px;
-`
-
+`;
 
 const LogoImage = styled.img`
   height: 200px;
@@ -63,7 +61,7 @@ const LogoImage = styled.img`
     margin-top: 15px;
     margin-right: 10%;
   }
-`
+`;
 const GroundContainer = styled.div`
 background-image: url('/assets/ground.svg');
 display: flex;
@@ -73,29 +71,27 @@ align-items: center;
 height: 45%;
 position: relative;
 
-`
-
+`;
 
 export function App() {
-  return ( 
-  
+  return (
+
     <Wrapper>
-     <BoookProvider>
-    <GlobalStyle/>
-    <TopContainer>
-    <ClockContainer>
-      <ClockImage src="assets/clock_base.svg" alt="clockImage"/>
-      <CLockPointer/>
-    </ClockContainer>
-      <LogoImage src="assets/logo.svg" alt="logoImage"/>
-    </TopContainer>
-    <GroundContainer> 
-      <BookShelf/>
-      <Board/> 
-    </GroundContainer>
-    </BoookProvider>
+      <BoookProvider>
+        <GlobalStyle />
+        <TopContainer>
+          <ClockContainer>
+            <ClockImage src="assets/clock_base.svg" alt="clockImage" />
+            <CLockPointer />
+          </ClockContainer>
+          <LogoImage src="assets/logo.svg" alt="logoImage" />
+        </TopContainer>
+        <GroundContainer>
+          <BookShelf />
+          <Board />
+        </GroundContainer>
+      </BoookProvider>
     </Wrapper>
-    
-    
+
   );
 }

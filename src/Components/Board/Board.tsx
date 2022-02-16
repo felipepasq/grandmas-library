@@ -1,8 +1,8 @@
-    import styled from "styled-components";
-    import { useBook } from "../../Contexts/BookContext";
-    import devices from "../../utils/devices";
+import styled from 'styled-components';
+import { useBook } from '../../Contexts/BookContext';
+import devices from '../../utils/devices';
 
-    const BoardContainer = styled.div`
+const BoardContainer = styled.div`
         background-image: url('/assets/board.svg');
     
         background-size: 330px;
@@ -23,8 +23,8 @@
         }
 
 
-    `
-    const PanelContainer = styled.div`
+    `;
+const PanelContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -45,14 +45,14 @@
             width: fit-content;
         }
 
-    `
-    const ButtonsRow = styled.div`
+    `;
+const ButtonsRow = styled.div`
         display: inline-flex;
         flex-wrap: wrap;
         gap: 10px;
     
-    `
-    const ButtonContainer = styled.div`
+    `;
+const ButtonContainer = styled.div`
         background-image:url('/assets/filter_button.svg') ;
         background-size: 40px;
         width: 43px;
@@ -86,8 +86,8 @@
             
         }
     
-    `
-    const OrganizeContainer = styled.div` 
+    `;
+const OrganizeContainer = styled.div` 
             border-top: 2px solid #E7DFEF;
             width: fit-content;
             height: 45px;
@@ -113,9 +113,9 @@
     
 
         }
-    `
+    `;
 
-    const GrandmasImage = styled.img`
+const GrandmasImage = styled.img`
         position: fixed;
         bottom: 0;
         transform: translateX(-80px);
@@ -127,60 +127,54 @@
             height:420px;
             transform: translateX(-390px);
         }
-    `
+    `;
 
-    export function Board() {
+export function Board() {
+  const {
+    orderBooks,
+    handleClick,
+  } = useBook();
 
-        
+  return (
+    <>
+      <BoardContainer>
 
-        const {
-            orderBooks,
-            handleClick
-        } = useBook();
+        <PanelContainer>
 
-       
+          <p>Sort By</p>
+          <ButtonsRow>
 
-        return  (
-        <>
-            <BoardContainer>
-            
-                <PanelContainer>
-                
-                <p>Sort By</p>
-                <ButtonsRow>
+            <ButtonContainer onClick={() => handleClick('title')}>
+              <button type="button">
+                <img src="/assets/filter_alphabetic.svg" alt="" />
+              </button>
+            </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>handleClick('title')} >
-                    <button>
-                        <img src="/assets/filter_alphabetic.svg" alt=""/>
-                    </button>
-                    </ButtonContainer>
+            <ButtonContainer onClick={() => handleClick('color')}>
+              <button type="button">
+                <img src="/assets/filter_colors.svg" alt="" />
+              </button>
+            </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>handleClick('color')} >
-                        <button>
-                        <img src="/assets/filter_colors.svg" alt="" />
-                        </button>
-                    </ButtonContainer>
+            <ButtonContainer onClick={() => handleClick('size')}>
+              <button type="button">
+                <img src="/assets/filter_sizes.svg" alt="" />
+              </button>
+            </ButtonContainer>
 
-                    <ButtonContainer onClick={()=>handleClick('size')} >
-                    <button>
-                        <img src="/assets/filter_sizes.svg" alt="" />
-                    </button>
-                    </ButtonContainer>
-                
-                </ButtonsRow>
-    
-                <OrganizeContainer>
+          </ButtonsRow>
 
-                <button onClick={()=>orderBooks()}>
-                        <img src="/assets/button.svg" alt="" />
-                </button>
+          <OrganizeContainer>
 
-                </OrganizeContainer>
+            <button type="button" onClick={() => orderBooks()}>
+              <img src="/assets/button.svg" alt="" />
+            </button>
 
-                </PanelContainer>
-            </BoardContainer>
-        <GrandmasImage src="assets/lady.svg"/>
-        </>
-        )
+          </OrganizeContainer>
 
-    }
+        </PanelContainer>
+      </BoardContainer>
+      <GrandmasImage src="assets/lady.svg" />
+    </>
+  );
+}
