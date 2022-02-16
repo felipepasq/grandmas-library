@@ -13,4 +13,7 @@ Using the buttons, grandma must organize the shelves, being able to sort by size
 * TypeScript.
 * Styled Components.
 
+## How to organize
 
+- First toggle the button that indicates the sort type that you desire.
+- Them hit the button organize to sort the books.
