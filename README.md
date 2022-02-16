@@ -15,6 +15,12 @@ Front end test for Vizpert.
   <img  height="300" src="https://github.com/felipepasq/grandmas-library/blob/master/public/assets/librarymobile.jpg">
 </p>
 
+## Install
+
+* Clone this repository
+* yarn install
+* yarn start
+
 ## About
 
 Using the buttons, grandma must organize the shelves, being able to sort by size, color or title. Books can also be rearranged on shelves by being dragged.
